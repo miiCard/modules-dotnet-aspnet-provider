@@ -1,0 +1,54 @@
+﻿@model MiiCardProviderExample.Models.LocalPasswordModel
+@{
+    ViewBag.Title = "Manage Account";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+</hgroup>
+
+<p class="message-success">@ViewBag.StatusMessage</p>
+
+<p>You're logged in as <strong>@User.Identity.Name</strong>.</p>
+
+@if (ViewBag.HasLocalPassword)
+{
+    @Html.Partial("_ChangePasswordPartial")
+}
+else
+{ 
+    @Html.Partial("_SetPasswordPartial")
+}
+
+<h2>What we know about you</h2>
+<p>Here's a dump from the last provider you logged in with this session:</p>
+@{
+    var extraData = ((IDictionary<string, string>)Session["LastExtraData"]);
+    if (extraData != null) 
+    {
+        <table>
+            @foreach (var kvp in extraData.OrderBy(x => x.Key))
+            {   
+                <tr>
+                    <th>@kvp.Key</th>
+                    <td>@kvp.Value</td>
+                </tr>
+            }
+        </table>
+    }
+    else 
+    {
+        <p><b>Oops - your session state's been lost or the provider gave us no information. Try logging back out and in again.</b></p>
+    }
+}
+
+<section id="externalLogins">
+    @Html.Action("RemoveExternalLogins")
+
+    <h3>Add an external login</h3>
+    @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
