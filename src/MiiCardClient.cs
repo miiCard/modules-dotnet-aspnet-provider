@@ -75,15 +75,15 @@ namespace miiCard.Providers.ASPNet
                     }
 
                     var extraData = new Dictionary<string, string>();
-                    extraData.Add("accesstoken", accessToken);
-                    extraData.Add("accesstokensecret", accessTokenSecret);
-                    extraData.Add("name", friendlyName);
-                    extraData.Add("identityassured", claimsResponse.Data.IdentityAssured.ToString().ToLower());
-                    extraData.Add("miicardusername", claimsResponse.Data.Username);
+                    extraData.Add(ExtraDataKeys.ACCESS_TOKEN, accessToken);
+                    extraData.Add(ExtraDataKeys.ACCESS_TOKEN_SECRET, accessTokenSecret);
+                    extraData.Add(ExtraDataKeys.NAME, friendlyName);
+                    extraData.Add(ExtraDataKeys.IDENTITY_ASSURED, claimsResponse.Data.IdentityAssured.ToString().ToLower());
+                    extraData.Add(ExtraDataKeys.MIICARD_USERNAME, claimsResponse.Data.Username);
 
                     if (claimsResponse.Data.LastVerified.HasValue)
                     {
-                        extraData.Add("lastverifieddate", claimsResponse.Data.LastVerified.Value.ToUniversalTime().ToString("o"));
+                        extraData.Add(ExtraDataKeys.LAST_VERIFIED_DATE, claimsResponse.Data.LastVerified.Value.ToUniversalTime().ToString("o"));
                     }
 
                     // If the caller's given us a processing event handler then let them have a stab at extracting some

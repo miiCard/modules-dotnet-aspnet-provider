@@ -25,8 +25,6 @@ namespace MiiCardProviderExample
             miiCardClient.SigningIn += miiCardClient_SigningIn;
 
             OAuthWebSecurity.RegisterClient(miiCardClient, "miiCard", new Dictionary<string, object>());
-
-            // We'll also allow sign-in via Facebook for this example
         }
 
         static void miiCardClient_SigningIn(object sender, MiiCardSigningInEventArgs e)
