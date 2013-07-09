@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("miiCard.Consumers.ASPNet")]
+[assembly: AssemblyTitle("miiCard.Providers.ASPNet")]
 [assembly: AssemblyDescription("miiCard ASP.NET Authentication Provider")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("miiCard Limited")]
