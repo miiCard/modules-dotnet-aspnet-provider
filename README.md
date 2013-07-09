@@ -49,7 +49,7 @@ For your convenience, the keys that index the default data returned by the provi
 <tr>
 <th>accesstoken</th>
 <td>ExtraDataKeys.ACCESS_TOKEN</td>
-<td>OAuth access token for use in subsequent API calls, if you wish to make use of the [Claims API](http://www.miicard.com/developers/claims-api)</td>
+<td>OAuth access token for use in subsequent API calls, if you wish to make use of the <a href="http://www.miicard.com/developers/claims-api">Claims API</a></td>
 </tr>
 <tr>
 <th>accesstokensecret</th>
