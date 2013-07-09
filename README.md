@@ -17,20 +17,20 @@ The following assumes you have used the standard ASP.NET MVC4 Internet Applicati
 
 First, add a reference to the miiCard.Providers.ASPNet NuGet package or associated source code:
 
-    PM&gt; install-package miiCard.Providers.ASPNet
+    PM> install-package miiCard.Providers.ASPNet
 
 Then add your miiCard consumer key and secret to your web.config file:
 
-    &lt;appSettings&gt;
-       &lt;add key="MiiCardConsumerKey" value="key" /&gt;
-       &lt;add key="MiiCardConsumerSecret" value="secret" /&gt;
-    &lt;/appSettings>
+    <appSettings>
+       <add key="MiiCardConsumerKey" value="key" />
+       <add key="MiiCardConsumerSecret" value="secret" />
+    </appSettings>
 
 Finally, register the miiCard provider with OAuthWebSecurity by editing App_Code\AuthConfig.cs:
 
     public static void RegisterAuth()
     {
-       OAuthWebSecurity.RegisterClient(new MiiCardClient(), "miiCard", new Dictionary&lt;string, object&gt;());
+       OAuthWebSecurity.RegisterClient(new MiiCardClient(), "miiCard", new Dictionary<string, object>());
     }
 
 Fire up your application and hit the Login page - you should now find the miiCard sign-in option available.
@@ -41,41 +41,41 @@ By default, the miiCard provider will return extra information about the miiCard
 For your convenience, the keys that index the default data returned by the provider are available via the ExtraDataKeys static class.
 
 <table>
-  <tr>
-    <th>Key</th>
-    <th>ExtraDataKeys equiv</th>
-    <th>Data</th>
-  </tr>
-  <tr>
-    <th>accesstoken</th>
-    <td>ExtraDataKeys.ACCESS_TOKEN</td>
-    <td>OAuth access token for use in subsequent API calls, if you wish to make use of the [Claims API](http://www.miicard.com/developers/claims-api)</td>
-  </tr>
-  <tr>
-    <th>accesstokensecret</th>
-    <td>ExtraDataKeys.ACCESS_TOKEN_SECRET</td>
-    <td>OAuth access token secret corresponding to the access token above</td>
-  </tr>
-  <tr>
-    <th>name</th>
-    <td>ExtraDataKeys.NAME</td>
-    <td>The miiCard member's full name, if supplied, or their miiCard username</td>
-  </tr>
-  <tr>
-    <th>identityassured</th>
-    <td>ExtraDataKeys.IDENTITY_ASSURED</td>
-    <td>Identity assurance status of the miiCard member - 'true' or 'false'</td>
-  </tr>
-  <tr>
-    <th>miicardusername</th>
-    <td>ExtraDataKeys.MIICARD_USERNAME</td>
-    <td>The miiCard member's username</td>
-  </tr>
-  <tr>
-    <th>lastverifieddate</th>
-    <td>ExtraDataKeys.LAST_VERIFIED_DATE</td>
-    <td>ISO 8601 formatted date and time at which the miiCard member's identity was last assured</td>
-  </tr>
+<tr>
+<th>Key</th>
+<th>ExtraDataKeys equiv</th>
+<th>Data</th>
+</tr>
+<tr>
+<th>accesstoken</th>
+<td>ExtraDataKeys.ACCESS_TOKEN</td>
+<td>OAuth access token for use in subsequent API calls, if you wish to make use of the [Claims API](http://www.miicard.com/developers/claims-api)</td>
+</tr>
+<tr>
+<th>accesstokensecret</th>
+<td>ExtraDataKeys.ACCESS_TOKEN_SECRET</td>
+<td>OAuth access token secret corresponding to the access token above</td>
+</tr>
+<tr>
+<th>name</th>
+<td>ExtraDataKeys.NAME</td>
+<td>The miiCard member's full name, if supplied, or their miiCard username</td>
+</tr>
+<tr>
+<th>identityassured</th>
+<td>ExtraDataKeys.IDENTITY_ASSURED</td>
+<td>Identity assurance status of the miiCard member - 'true' or 'false'</td>
+</tr>
+<tr>
+<th>miicardusername</th>
+<td>ExtraDataKeys.MIICARD_USERNAME</td>
+<td>The miiCard member's username</td>
+</tr>
+<tr>
+<th>lastverifieddate</th>
+<td>ExtraDataKeys.LAST_VERIFIED_DATE</td>
+<td>ISO 8601 formatted date and time at which the miiCard member's identity was last assured</td>
+</tr>
 </table>
 
 Your application can hook the MiiCardClient.SigningIn event to customise the ExtraData dictionary as required - it's passed into the event as an argument:
@@ -85,7 +85,7 @@ Your application can hook the MiiCardClient.SigningIn event to customise the Ext
        var miiCardClient = new MiiCardClient("key", "secret");
        miiCardClient.SigningIn += miiCardClient_SigningIn;
     
-       OAuthWebSecurity.RegisterClient(miiCardClient, "miiCard", new Dictionary&lt;string, object&gt;());
+       OAuthWebSecurity.RegisterClient(miiCardClient, "miiCard", new Dictionary<string, object>());
     }
     
     static void miiCardClient_SigningIn(object sender, MiiCardSigningInEventArgs e)
@@ -93,7 +93,7 @@ Your application can hook the MiiCardClient.SigningIn event to customise the Ext
        // You can replace the existing keys entirely if you wish, or alter their
        // representation. Here we'll extract the user's city and country from their
        // verified postal address, if we can
-       PostalAddress verifiedAddress = (e.MiiCardUserProfile.PostalAddresses ?? Enumerable.Empty&lt;PostalAddress&gt;()).FirstOrDefault(x => x.Verified);
+       PostalAddress verifiedAddress = (e.MiiCardUserProfile.PostalAddresses ?? Enumerable.Empty<PostalAddress>()).FirstOrDefault(x => x.Verified);
        if (verifiedAddress != null)
        {
           e.ExtraData["region"] = string.Format("{0}, {1}", verifiedAddress.City, verifiedAddress.Country);
