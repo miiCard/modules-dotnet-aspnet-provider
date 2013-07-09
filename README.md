@@ -2,6 +2,8 @@ modules-dotnet-aspnet-provider
 =
 The miiCard.Providers.ASPNet library allows quick miiCard integration into ASP.NET MVC4 websites that use the OAuthWebSecurity class.
 
+You can get the library from [NuGet](https://nuget.org/packages/miiCard.Providers.ASPNet).
+
 ##What is miiCard
 miiCard lets anybody prove their identity to the same level of traceability as using a passport, driver's licence or photo ID. We then allow external web applications to ask miiCard users to share a portion of their identity information with the application through a web-accessible API.
 
