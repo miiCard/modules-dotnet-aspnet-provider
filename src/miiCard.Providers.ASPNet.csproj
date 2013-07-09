@@ -52,7 +52,7 @@
     </Reference>
     <Reference Include="miiCard.Consumers, Version=1.3.4937.23479, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\test\packages\miiCard.Consumers.1.3.4937.23479\lib\net40\miiCard.Consumers.dll</HintPath>
+      <HintPath>packages\miiCard.Consumers.1.3.4937.23479\lib\net40\miiCard.Consumers.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
