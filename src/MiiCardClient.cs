@@ -38,7 +38,7 @@ namespace miiCard.Providers.ASPNet
         }
 
         public MiiCardClient(string consumerKey, string consumerSecret)
-            : base("miiCard", MiiCardConsumer.ServiceDescription, new SessionStateConsumerTokenManager(consumerKey, consumerSecret))
+            : base("miiCard", MiiCardConsumer.ServiceDescription, consumerKey, consumerSecret)
         {
             if (string.IsNullOrWhiteSpace(consumerKey))
             {
